@@ -1,3 +1,4 @@
+
 # Project Name
 
 ![Team Photo](Insert a Team Photo URL here)
@@ -22,3 +23,5 @@ TODO: how to deploy the project
 TODO: list of authors
 
 ## Acknowledgments
+
+starterpack from the [cs52 server-side starterpack](https://github.com/dartmouth-cs52/express-babel-starter)
