@@ -1,18 +1,20 @@
 
-# Project Name
+# Tutor Base
 
-![Team Photo](Insert a Team Photo URL here)
-[*how?*](https://help.github.com/articles/about-readmes/#relative-links-and-image-paths-in-readme-files)
+![Team Photo](https://i.imgur.com/lxjmZfl.png)
 
-TODO: short project description, some sample screenshots or mockups
+Tutor Base is website designed to match Tutors and Tutees more efficiently with each other and create better tutor pairs based off of their needs.
 
 ## Architecture
 
-TODO:  descriptions of code organization and tools and libraries used
+Descriptions of code organization and tools and libraries used
+* We plan on using React.js on the frontend
+* Node.js and MongoDB for the backend
 
 ## Setup
 
-TODO: how to get the project dev environment up and running, npm install etc
+* clone this repo
+* `yarn install` to install project dependencies
 
 ## Deployment
 
@@ -20,8 +22,15 @@ TODO: how to deploy the project
 
 ## Authors
 
-TODO: list of authors
+* Mike Zhou
+* Nicholas Bergen
+* Brittany Critchfield
+* Joseph Notis
+* Kimberly Rangel
+* Rodrigo Cavero
 
 ## Acknowledgments
 
-starterpack from the [cs52 server-side starterpack](https://github.com/dartmouth-cs52/express-babel-starter)
+* Tim Tregubov
+
+server-side starterpack from the [cs52 server-side starterpack](https://github.com/dartmouth-cs52/express-babel-starter)
