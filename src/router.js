@@ -12,16 +12,16 @@ router.get('/', (req, res) => {
 
 router.route('/tutors')
   .post(Posts.createPost)
-  .get(Posts.getTutorPosts)
-  .delete(Posts.deletePost);
+  .get(Posts.getTutorPosts);
 
 router.route('/tutees')
   .post(Posts.createPost)
-  .get(Posts.getTuteePosts)
-  .delete(Posts.deletePost);
+  .get(Posts.getTuteePosts);
+
 
 router.route('/posts/:id')
-  .get(Posts.getPost);
+  .get(Posts.getPost)
+  .delete(Posts.deletePost);
 
 
 export default router;
