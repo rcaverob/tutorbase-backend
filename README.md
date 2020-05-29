@@ -23,7 +23,7 @@ TODO: how to deploy the project
 ## Authors
 
 * Mike Zhou
-* Nicholas Bergen
+* Nicolas Bergen
 * Brittany Critchfield
 * Joseph Notis
 * Kimberly Rangel
