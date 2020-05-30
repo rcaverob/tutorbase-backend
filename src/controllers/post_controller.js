@@ -55,7 +55,13 @@ export const getPost = (req, res) => {
 
 
 export const deletePost = (req, res) => {
-  res.send('delete a post here');
+  Post.findByIdAndDelete(req.params.id)
+  .then((result)=>{
+    res.send(result);
+  })
+  .catch((error) =>{
+    res.status(200).json({error});
+  });
 };
 // export const updatePost = (req, res) => {
 //   res.send('update a post here');
