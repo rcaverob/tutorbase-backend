@@ -42,6 +42,68 @@ export const getTuteePosts = (req, res) => {
     });
 };
 
+export const getTuteePostsGrouped = (req, res) => {
+  PostModel.aggregate([
+    {
+      $match: { type: 'tutee' },
+    },
+    {
+      $project: {
+        fullClass: { $concat: ['$department', '$class'] },
+        department: '$department',
+        class: '$class',
+      },
+    },
+    {
+      $group: {
+        _id: '$fullClass',
+        people: {
+          $push: {
+            availability: '$availability', notes: '$notes', responses: '$responses', userID: '$userID',
+          },
+        },
+      },
+    },
+  ])
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((error) => {
+      res.status(500).json({ error });
+    });
+};
+
+export const getTutorPostsGrouped = (req, res) => {
+  PostModel.aggregate([
+    {
+      $match: { type: 'tutee' },
+    },
+    {
+      $project: {
+        fullClass: { $concat: ['$department', '$class'] },
+        department: '$department',
+        class: '$class',
+      },
+    },
+    {
+      $group: {
+        _id: '$fullClass',
+        people: {
+          $push: {
+            availability: '$availability', notes: '$notes', responses: '$responses', userID: '$userID',
+          },
+        },
+      },
+    },
+  ])
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((error) => {
+      res.status(500).json({ error });
+    });
+};
+
 
 export const getPost = (req, res) => {
   PostModel.findById(req.params.id)

@@ -18,6 +18,11 @@ router.route('/tutees')
   .post(Posts.createPost)
   .get(Posts.getTuteePosts);
 
+router.route('/tuteesGrouped')
+  .get(Posts.getTuteePostsGrouped);
+
+router.route('/tutorsGrouped')
+  .get(Posts.getTutorPostsGrouped);
 
 router.route('/posts/:id')
   .get(Posts.getPost)
