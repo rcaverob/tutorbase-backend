@@ -50,8 +50,10 @@ export const getTuteePostsGrouped = (req, res) => {
     {
       $project: {
         fullClass: { $concat: ['$department', '$class'] },
-        department: '$department',
-        class: '$class',
+        availability: '$availability',
+        userID: '$userID',
+        notes: '$notes',
+        responses: '$responses',
       },
     },
     {
@@ -81,8 +83,10 @@ export const getTutorPostsGrouped = (req, res) => {
     {
       $project: {
         fullClass: { $concat: ['$department', '$class'] },
-        department: '$department',
-        class: '$class',
+        availability: '$availability',
+        userID: '$userID',
+        notes: '$notes',
+        responses: '$responses',
       },
     },
     {
@@ -97,6 +101,8 @@ export const getTutorPostsGrouped = (req, res) => {
     },
   ])
     .then((result) => {
+      console.log(result);
+      console.log('sending res');
       res.json(result);
     })
     .catch((error) => {
