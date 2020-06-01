@@ -78,7 +78,7 @@ export const getTuteePostsGrouped = (req, res) => {
 export const getTutorPostsGrouped = (req, res) => {
   PostModel.aggregate([
     {
-      $match: { type: 'tutee' },
+      $match: { type: 'tutor' },
     },
     {
       $project: {
