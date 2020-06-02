@@ -28,6 +28,12 @@ router.route('/tuteesGrouped')
 router.route('/tutorsGrouped')
   .get(Posts.getTutorPostsGrouped);
 
+router.route('/tutorsByUser')
+  .get(requireAuth, (req, res) => { Posts.getPostsByUser(req, res, 'tutor'); });
+
+router.route('/tuteesByUser')
+  .get(requireAuth, (req, res) => { Posts.getPostsByUser(req, res, 'tutee'); });
+
 router.route('/posts/:id')
   .get(Posts.getPost)
   .delete(requireAuth, (req, res) => {
