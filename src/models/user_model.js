@@ -14,7 +14,6 @@ const UserSchema = new Schema({
   tutorRequestIDs: [Number],
   tuteeRequestIDs: [Number],
   matches: [],
-
 }, {
   toObject: { virtuals: true },
   toJSON: { virtuals: true },
