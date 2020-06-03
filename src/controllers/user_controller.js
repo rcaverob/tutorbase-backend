@@ -45,6 +45,21 @@ export const signup = (req, res, next) => {
   }
 };
 
+// add function here to send info to user through here
+export const receiveTRequest = (req, res, next) => {
+  // or userID = req.body.userID;
+  const { userID } = req.body;
+  const OU = req.user.id;
+  User.findByIdAndUpdate(userID, { requests: OU }, { new: true })
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((error) => {
+      res.status(100).json({ error });
+    });
+};
+
+
 // encodes a new token for a user object
 function tokenForUser(user) {
   const timestamp = new Date().getTime();

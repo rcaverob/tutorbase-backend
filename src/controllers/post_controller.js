@@ -153,6 +153,8 @@ export const deletePost = (req, res) => {
       res.status(200).json({ error });
     });
 };
+
+
 // export const updatePost = (req, res) => {
 //   res.send('update a post here');
 // };
