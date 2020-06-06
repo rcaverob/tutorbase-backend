@@ -10,22 +10,25 @@ router.get('/', (req, res) => {
 });
 
 // /your routes will go here
-
-// add the send request route here
 router.route('/tutors')
   .post(requireAuth, (req, res) => {
     Posts.createPost(req, res);
   })
   .get(Posts.getTutorPosts);
-// add it here as well
+
+// These routes are for receiving and showing request
 router.route('/tutorsReq')
   .post(requireAuth, (req, res) => {
     UserController.receiveTRequest(req, res);
   });
+
 router.route('/tuteesReq')
   .post(requireAuth, (req, res) => {
     UserController.receiveTRequest(req, res);
   });
+
+router.route('/requests')
+  .get(requireAuth, UserController.showTRequest);
 router.route('/tutees')
   .post(requireAuth, (req, res) => {
     Posts.createPost(req, res);

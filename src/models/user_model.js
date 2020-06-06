@@ -13,8 +13,6 @@ const UserSchema = new Schema({
   availability: String,
   tutorRequestIDs: [Number],
   tuteeRequestIDs: [Number],
-  // add list here so that they can receive requests
-  requests: [String],
   matches: [],
 }, {
   toObject: { virtuals: true },
