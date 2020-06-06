@@ -11,11 +11,13 @@ export const signin = (req, res, next) => {
 };
 
 export const signup = (req, res, next) => {
+  const { name } = req.body;
+  const { year } = req.body;
   const { email } = req.body;
   const { password } = req.body;
 
-  if (!email || !password || !email.toLowerCase().includes('dartmouth.edu')) {
-    res.status(422).send('You must provide a Dartmouth email and password');
+  if (!name || !year || !email || !password || !email.toLowerCase().includes('dartmouth.edu')) {
+    res.status(422).send('You must provide a Dartmouth email and password, as well as a name and year.');
     next();
   } else {
     // if user exists already, error
@@ -26,6 +28,8 @@ export const signup = (req, res, next) => {
           next();
         } else { // user does not exist yet; proceed
           const newUser = new User();
+          newUser.name = name;
+          newUser.year = year;
           newUser.email = email;
           newUser.password = password;
           newUser.save()
