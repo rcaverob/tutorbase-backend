@@ -1,7 +1,8 @@
 import jwt from 'jwt-simple';
 import dotenv from 'dotenv';
+// import mongoose from 'mongoose';
 import User from '../models/user_model';
-import Request from '../models/request_model';
+import * as requestController from './request_controller';
 
 dotenv.config({ silent: true });
 
@@ -50,36 +51,22 @@ export const signup = (req, res, next) => {
   }
 };
 
-// add function here to send info to user through here
-export const receiveTRequest = (req, res, next) => {
-  // or userID = req.body.userID;
-  const { userID } = req.body;
+export const acceptRequest = (req, res) => {
+  const userID = req.user.id;
+  const { requestID } = req.body;
+  // eslint-disable-next-line consistent-return
+  User.findById(userID, (err, user) => {
+    if (err) return err;
+    if (!user) return res.send();
 
-  const request = new Request();
-  request.userID = userID;
-  request.type = req.body.type;
-  request.requester = req.user.id;
-  request.postID = req.body.postID;
-  request.save()
-    .then((result) => {
-      res.send(result);
-      // res.send(result.id);
-    })
-    .catch((error) => {
-      res.status(500).json({ error });
-    });
-};
+    user.matches.push(requestID);
 
-export const showTRequest = (req, res) => {
-  // res.send('ehy?');
-  Request.find({ userID: req.user.id })
-    .then((result) => {
-      res.send(result);
-      // res.send(result.id);
-    })
-    .catch((error) => {
-      res.status(500).json({ error });
+    user.save((err) => {
+      if (err) return res.send(err);
+      requestController.deleteRequestUser(requestID);
+      return res.send();
     });
+  });
 };
 
 
