@@ -1,3 +1,6 @@
+/**
+ * Taken from cs52 lab 5 (part 2) - platform API+Auth
+ */
 // lets import some stuff
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
