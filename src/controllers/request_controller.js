@@ -45,7 +45,10 @@ export const declineRequest = (req, res) => {
 };
 
 export const deleteRequestUser = (id) => {
-  RequestModel.findByIdAndDelete(id)
+  const change = {
+    type: null,
+  };
+  RequestModel.findByIdAndUpdate(id, change, { new: true })
     .then((result) => {
       console.log(result);
     })
