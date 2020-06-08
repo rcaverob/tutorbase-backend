@@ -59,7 +59,7 @@ export const receiveTRequest = (req, res, next) => {
   request.userID = userID;
   request.type = req.body.type;
   request.requester = req.user.id;
-  request.post = req.body.postID;
+  request.postID = req.body.postID;
   request.save()
     .then((result) => {
       res.send(result);
