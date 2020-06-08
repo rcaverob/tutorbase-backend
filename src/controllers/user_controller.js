@@ -69,6 +69,19 @@ export const acceptRequest = (req, res) => {
   });
 };
 
+export const getMatches = (req, res) => {
+  User.findById(req.user.id, 'matches').populate({
+    path: 'matches',
+    // Get the requester's user info
+    populate: { path: 'requester' },
+  })
+    .then((response) => {
+      res.send(response);
+    })
+    .catch((error) => {
+      res.send(error);
+    });
+};
 
 // encodes a new token for a user object
 function tokenForUser(user) {
