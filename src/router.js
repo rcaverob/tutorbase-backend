@@ -36,10 +36,10 @@ router.route('/tutees')
   .get(Posts.getTuteePosts);
 
 router.route('/tuteesGrouped')
-  .get(Posts.getTuteePostsGrouped);
+  .get((req, res) => { Posts.getPostsGrouped(req, res, 'tutee'); });
 
 router.route('/tutorsGrouped')
-  .get(Posts.getTutorPostsGrouped);
+  .get((req, res) => { Posts.getPostsGrouped(req, res, 'tutor'); });
 
 router.route('/tutorsByUser')
   .get(requireAuth, (req, res) => { Posts.getPostsByUser(req, res, 'tutor'); });
