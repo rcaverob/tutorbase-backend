@@ -12,7 +12,7 @@ The API is run using Nodejs, express, and MongoDB.
 ### Code organization
 
 * Different types of data (users, posts) are broken into individual [models](./models) and data manipulation is handled in their respective [controllers](./controllers)
-* User
+    * Models/controllers for users, posts, and requests
 
 ### Libraries used
 
