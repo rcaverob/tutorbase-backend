@@ -14,7 +14,7 @@ const RequestSchema = new Schema({
 
 
 // create PostModel class from schema
-const PostModel = mongoose.model('Request', RequestSchema);
+const RequestModel = mongoose.model('Request', RequestSchema);
 
 
-export default PostModel;
+export default RequestModel;

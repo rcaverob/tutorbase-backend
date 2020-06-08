@@ -13,7 +13,7 @@ const UserSchema = new Schema({
   availability: String,
   tutorRequestIDs: [Number],
   tuteeRequestIDs: [Number],
-  matches: [],
+  matches: [{ type: Schema.Types.ObjectId, ref: 'Request' }],
 }, {
   toObject: { virtuals: true },
   toJSON: { virtuals: true },
