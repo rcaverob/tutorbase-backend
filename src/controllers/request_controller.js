@@ -23,7 +23,7 @@ export const receiveTRequest = (req, res) => {
 
 export const showTRequest = (req, res) => {
   // res.send('ehy?');
-  RequestModel.find({ userID: req.user.id, $or: [{ type: 'tutors' }, { type: 'tutees' }] }).populate('requester')
+  RequestModel.find({ userID: req.user.id, $or: [{ type: 'tutors' }, { type: 'tutees' }] }).populate('requester').populate('postID')
     .then((result) => {
       res.send(result);
       // res.send(result.id);
