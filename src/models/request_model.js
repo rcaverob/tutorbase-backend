@@ -2,9 +2,9 @@ import mongoose, { Schema } from 'mongoose';
 
 // create a PostSchema with a title field
 const RequestSchema = new Schema({
-  userID: String,
+  userID: { type: Schema.Types.ObjectId, ref: 'User' },
   type: String,
-  postID: String,
+  postID: { type: Schema.Types.ObjectId, ref: 'Post' },
   requester: { type: Schema.Types.ObjectId, ref: 'User' },
 
 }, {

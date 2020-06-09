@@ -64,6 +64,11 @@ router.route('/decline/:id')
     RequestController.declineRequest(req, res);
   });
 
+router.route('/clear')
+  .post(requireAuth, (req, res) => {
+    UserController.clearMatches(req, res);
+  });
+
 router.route('/matches')
   .get(requireAuth, (req, res) => {
     UserController.getMatches(req, res);
