@@ -1,5 +1,4 @@
 // import Post from '../models/post_model';
-
 import PostModel from '../models/post_model';
 
 export const createPost = (req, res) => {
@@ -44,6 +43,9 @@ export const getTuteePosts = (req, res) => {
 };
 
 export const getPostsGrouped = (req, res, type) => {
+  console.log('Deleting posts');
+  PostModel.deleteMany({});
+  console.log('done');
   PostModel.aggregate([
     {
       $match: { type },
