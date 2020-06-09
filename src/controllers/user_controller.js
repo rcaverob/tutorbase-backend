@@ -83,10 +83,11 @@ export const acceptRequest = (req, res) => {
 };
 
 export const getMatches = (req, res) => {
-  User.findById(req.user.id, 'matches').populate({
+  const userID = req.user.id;
+  User.findById(userID).populate({
     path: 'matches',
     // Get the requester's user info
-    populate: { path: 'requester' },
+    populate: { path: 'requester postID userID' },
   })
     .then((response) => {
       res.send(response);
