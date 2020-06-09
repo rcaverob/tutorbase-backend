@@ -47,8 +47,19 @@ export const getPostsGrouped = (req, res, type) => {
     {
       $match: { type },
     },
+    // eslint-disable-next-line new-cap
+    { $addFields: { userObjID: { $toObjectId: '$userID' } } },
+    {
+      $lookup: {
+        from: 'users',
+        localField: 'userObjID', // field in the orders collection
+        foreignField: '_id', // field in the items collection
+        as: 'userArr',
+      },
+    },
     {
       $project: {
+        user: { $arrayElemAt: ['$userArr', 0] },
         fullClass: { $concat: ['$department', '$class'] },
         availability: '$availability',
         userID: '$userID',
@@ -62,16 +73,18 @@ export const getPostsGrouped = (req, res, type) => {
         _id: '$fullClass',
         people: {
           $push: {
-            availability: '$availability', notes: '$notes', responses: '$responses', userID: '$userID', postID: '$postID',
+            availability: '$availability', notes: '$notes', responses: '$responses', userID: '$userID', postID: '$postID', user: '$user',
           },
         },
       },
     },
   ])
     .then((result) => {
+      console.log(result);
       res.json(result);
     })
     .catch((error) => {
+      console.log(error);
       res.status(500).json({ error });
     });
 };
@@ -80,11 +93,9 @@ export const getPostsGrouped = (req, res, type) => {
 export const getPostsByUser = (req, res, type) => {
   PostModel.find({ type, userID: req.user.id })
     .then((result) => {
-      console.log(result);
       res.json(result);
     })
     .catch((error) => {
-      console.log(error);
       res.status(500).json({ error });
     });
 };
