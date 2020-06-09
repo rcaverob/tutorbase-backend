@@ -9,7 +9,7 @@ const PostSchema = new Schema({
   availability: String,
   notes: String,
   responses: [String],
-
+  userObjID: Schema.Types.ObjectId,
 }, {
   toObject: { virtuals: true },
   toJSON: { virtuals: true },

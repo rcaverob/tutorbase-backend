@@ -12,6 +12,7 @@ export const createPost = (req, res) => {
   post.availability = req.body.availability;
   post.notes = req.body.notes;
   post.responses = req.body.responses;
+  post.userObjID = req.user.id;
   post.save()
     .then((result) => {
       res.json({ result });
@@ -47,8 +48,6 @@ export const getPostsGrouped = (req, res, type) => {
     {
       $match: { type },
     },
-    // eslint-disable-next-line new-cap
-    { $addFields: { userObjID: { $toObjectId: '$userID' } } },
     {
       $lookup: {
         from: 'users',
