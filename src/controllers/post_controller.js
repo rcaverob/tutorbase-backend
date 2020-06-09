@@ -43,9 +43,6 @@ export const getTuteePosts = (req, res) => {
 };
 
 export const getPostsGrouped = (req, res, type) => {
-  console.log('Deleting posts');
-  PostModel.deleteMany({}, () => { console.log('AAAAA'); });
-  console.log('done');
   PostModel.aggregate([
     {
       $match: { type },
