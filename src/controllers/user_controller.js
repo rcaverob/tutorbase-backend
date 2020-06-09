@@ -53,6 +53,7 @@ export const signup = (req, res, next) => {
 
 export const acceptRequest = (req, res) => {
   const userID = req.user.id;
+  const { requesterID } = req.body;
   const { requestID } = req.body;
   // eslint-disable-next-line consistent-return
   User.findById(userID, (err, user) => {
@@ -61,10 +62,22 @@ export const acceptRequest = (req, res) => {
 
     user.matches.push(requestID);
 
+    // eslint-disable-next-line consistent-return
     user.save((err) => {
       if (err) return res.send(err);
-      requestController.deleteRequestUser(requestID);
-      return res.send();
+      // eslint-disable-next-line consistent-return
+      User.findById(requesterID, (err, requester) => {
+        if (err) return err;
+        if (!user) return res.send();
+
+        requester.matches.push(requestID);
+        requester.save((err) => {
+          if (err) return res.send(err);
+          requestController.deleteRequestUser(requestID);
+
+          return res.send();
+        });
+      });
     });
   });
 };
