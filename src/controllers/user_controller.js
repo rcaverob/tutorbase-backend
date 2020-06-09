@@ -97,6 +97,17 @@ export const getMatches = (req, res) => {
     });
 };
 
+export const clearMatches = (req, res) => {
+  const { clearArray } = req.body;
+  User.findByIdAndUpdate(req.user.id, { matches: clearArray }, { new: true })
+    .then((response) => {
+      res.send(response);
+    })
+    .catch((error) => {
+      res.send(error);
+    });
+};
+
 // encodes a new token for a user object
 function tokenForUser(user) {
   const timestamp = new Date().getTime();
