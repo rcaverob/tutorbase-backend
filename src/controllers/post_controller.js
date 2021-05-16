@@ -12,7 +12,8 @@ export const createPost = (req, res) => {
   post.notes = req.body.notes;
   post.responses = req.body.responses;
   post.userObjID = req.user.id;
-  post.save()
+  post
+    .save()
     .then((result) => {
       res.json({ result });
     })
@@ -71,22 +72,24 @@ export const getPostsGrouped = (req, res, type) => {
         _id: '$fullClass',
         people: {
           $push: {
-            availability: '$availability', notes: '$notes', responses: '$responses', userID: '$userID', postID: '$postID', user: '$user',
+            availability: '$availability',
+            notes: '$notes',
+            responses: '$responses',
+            userID: '$userID',
+            postID: '$postID',
+            user: '$user',
           },
         },
       },
     },
   ])
     .then((result) => {
-      console.log(result);
       res.json(result);
     })
     .catch((error) => {
-      console.log(error);
       res.status(500).json({ error });
     });
 };
-
 
 export const getPostsByUser = (req, res, type) => {
   PostModel.find({ type, userID: req.user.id })
@@ -119,7 +122,6 @@ export const getPost = (req, res) => {
     });
 };
 
-
 export const deletePost = (req, res) => {
   PostModel.findByIdAndDelete(req.params.id)
     .then((result) => {
@@ -129,7 +131,6 @@ export const deletePost = (req, res) => {
       res.status(200).json({ error });
     });
 };
-
 
 // export const updatePost = (req, res) => {
 //   res.send('update a post here');
