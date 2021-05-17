@@ -1,17 +1,17 @@
-
 # Tutor Base
-
-![Team Photo](https://i.imgur.com/lxjmZfl.png)
 
 Tutor Base is website designed to match Tutors and Tutees more efficiently with each other and create better tutor pairs based off of their needs.
 
+API link: https://tutor-base.herokuapp.com/
+Frontend Repo: https://github.com/rcaverob/tutorbase-frontend
+
 ## Architecture
 
-The API is run using Nodejs, express, and MongoDB. 
+The API is run using Nodejs, express, and MongoDB.
 
 ### Code organization
 
-* Different types of data (users, posts) are broken into individual [models](./models) and data manipulation is handled in their respective [controllers](./controllers)
+* Different types of data (users, posts) are broken into individual [models](./src/models) and data manipulation is handled in their respective [controllers](./src/controllers)
     * Models/controllers for users, posts, and requests
 
 ### Libraries used
@@ -28,26 +28,20 @@ The API is run using Nodejs, express, and MongoDB.
 
 ## Deployment
 
+
 ### Using localhost
 
 * run `yarn dev` in the API folder to deploy the server to [localhost:9090](https://localhost:9090) (if you changed the `port` in server.js, replace 9090 with the edited port)
 
-### Using your own Heroku app
-
-* Make sure you add the mLab resource in heroku
-* If deploying using GitHub, follow the instructions in Heroku under the "Deploy" tab.
-* If deploying using Heroku Git, make sure you intsall Heroku (`brew install heroku/brew/heroku`). This repo is already set up, so you just need to add a remote to Heroku (`heroku git:remote -a YOUR_HEROKU_APP`). Once you have commits ready to push to heroku, push using `git push heroku master` to deploy.
-
-If you would like to run a local instance of the TutorBase frontend with this API, follow the deployment instructions on the [TutorBase frontend repo](https://github.com/dartmouth-cs52-20S/project-tutorbase#deployment)
 
 ## Authors
 
+* Rodrigo Cavero
 * Mike Zhou
 * Nicolas Bergen
 * Brittany Critchfield
 * Joseph Notis
 * Kimberly Rangel
-* Rodrigo Cavero
 
 ## Acknowledgments
 
