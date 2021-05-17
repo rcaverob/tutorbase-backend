@@ -115,11 +115,16 @@ export const acceptRequest = (req, res) => {
 
 export const getMatches = (req, res) => {
   const userID = req.user.id;
-  User.findById(userID)
+  User.findOne({ _id: userID })
+    .select('matches')
     .populate({
       path: 'matches',
-      // Get the requester's user info
-      populate: { path: 'requester postID userID' },
+      // Get the requester's user required info
+      populate: [
+        { path: 'requester', select: 'name year email' },
+        { path: 'postID' },
+        { path: 'userID', select: 'name year email' },
+      ],
     })
     .then((response) => {
       res.send(response);
