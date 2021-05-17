@@ -45,7 +45,10 @@ export const showTRequest = (req, res) => {
     userID: req.user.id,
     $or: [{ type: 'tutors' }, { type: 'tutees' }],
   })
-    .populate('requester')
+    .populate({
+      path: 'requester',
+      select: 'name year email',
+    })
     .populate('postID')
     .then((result) => {
       res.send(result);
@@ -57,18 +60,19 @@ export const showTRequest = (req, res) => {
 };
 
 export const getMyRequests = (req, res) => {
-  console.log('Getting My requests');
   RequestModel.find({
     requester: req.user.id,
     $or: [{ type: 'tutors' }, { type: 'tutees' }],
   })
-    .populate('userID')
+    .populate({
+      path: 'userID',
+      select: 'name year email',
+    })
     .populate('postID')
     .then((result) => {
       res.send(result);
     })
     .catch((error) => {
-      console.log('ERRor');
       res.status(500).json({ error });
     });
 };
