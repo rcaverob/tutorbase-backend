@@ -3,6 +3,7 @@
 Tutor Base is website designed to match Tutors and Tutees more efficiently with each other and create better tutor pairs based off of their needs.
 
 API link: https://tutor-base.herokuapp.com/
+
 Frontend Repo: https://github.com/rcaverob/tutorbase-frontend
 
 ## Architecture
